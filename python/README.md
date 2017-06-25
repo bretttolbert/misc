@@ -49,14 +49,12 @@ export YANG_MODPATH=~/Git/yang-explorer/default-models/
 export PYANG_XSLT_DIR=~/Git/pyang/xslt
 export PYANG_RNG_LIBDIR=~/Git/pyang/schema
 sudo apt-get install xsltproc
-```
 cd ~/Git/misc/python/yang/models
 pyang --strict example-sports.yang
 pyang -f tree example-sports.yang
 pyang -f sample-xml-skeleton -o sample-skeleton.xml example-sports.yang
 yang2dsdl example-sports.yang
-```
-
+ 
 Useful links:
 https://www.yumaworks.com/pub/docs/15.10/pdf/YANG_Cheat_Sheet.pdf
 https://github.com/CiscoDevNet/yang-explorer
@@ -71,16 +69,13 @@ http://www.cisco.com/c/dam/global/cs_cz/assets/ciscoconnect/2014/assets/tech_sdn
 http://www.yang-central.org/twiki/bin/view/Main/YangTools :
  Validation of instance XML documents (datastore contents or NETCONF PDUs) using pyang is explained in DSDLMappingTutorial <http://www.yang-central.org/twiki/bin/view/Main/DSDLMappingTutorial> and yang2dsdl manual page <http://www.yang-central.org/twiki/pub/Main/YangTools/yang2dsdl.1.html>
  
-```
 pyang
 The following directories are always added to the search path:
 current directory
 $YANG_MODPATH
 $HOME/yang/modules
 $YANG_INSTALL/yang/modules OR if $YANG_INSTALL is unset <the default installation directory>/yang/modules (on Unix systems: /usr/share/yang/modules)
-```
  
-```
 If you get errors like:
 warning: failed to load external entity "/usr/local/share/yang/xslt/basename.xsl"
 warning: failed to load external entity "schema-dir"
@@ -88,4 +83,3 @@ If you look at the yang2dsdl source, you'll see there are two environment variab
 https://github.com/mbj4668/pyang/blob/master/bin/yang2dsdl
 xslt_dir=${PYANG_XSLT_DIR:-/usr/local/share/yang/xslt}
 schema_dir=${PYANG_RNG_LIBDIR:-/usr/local/share/yang/schema}
-```
