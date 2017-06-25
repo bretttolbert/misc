@@ -1,5 +1,9 @@
 ```
 mkdir ~/Git && cd ~/Git
+git clone git@github.com:CiscoDevNet/yang-explorer.git
+cd yang-explorer
+sudo bash setup.sh
+cd ..
 pip uninstall pyang
 git clone git@github.com:mbj4668/pyang.git
 cd pyang
