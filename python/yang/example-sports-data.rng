@@ -1,2 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:nma="urn:ietf:params:xml:ns:netmod:dsdl-annotations:1" xmlns:sports="http://example.com/example-sports" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" ns="urn:ietf:params:xml:ns:netconf:base:1.0"><include href="/home/brett/Git/pyang/schema/relaxng-lib.rng"/><start><element name="data"><interleave><grammar ns="http://example.com/example-sports"><include href="example-sports-gdefs.rng"/><start><optional><element name="sports:sports"><interleave><zeroOrMore><element name="sports:person"><element name="sports:name"><data type="string"/></element><element name="sports:birthday"><ref name="ietf-yang-types__date-and-time"/></element></element></zeroOrMore><zeroOrMore><element name="sports:team"><element name="sports:name"><data type="string"/></element><zeroOrMore><element name="sports:player"><element name="sports:name"><data type="string"/></element><element name="sports:season"><ref name="example-sports__season"/></element><interleave><element name="sports:number"><data type="unsignedShort"/></element><optional><element name="sports:scores"><data type="unsignedShort"/></element></optional></interleave></element></zeroOrMore></element></zeroOrMore></interleave></element></optional></start></grammar></interleave></element></start></grammar>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:nma="urn:ietf:params:xml:ns:netmod:dsdl-annotations:1" xmlns:sports="http://example.com/example-sports" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes" ns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <include href="/home/brett/Git/pyang/schema/relaxng-lib.rng"/>
+  <start>
+    <element name="data">
+      <interleave>
+        <grammar ns="http://example.com/example-sports">
+          <include href="example-sports-gdefs.rng"/>
+          <start>
+            <optional>
+              <element name="sports:sports">
+                <interleave>
+                  <zeroOrMore>
+                    <element name="sports:person">
+                      <element name="sports:name">
+                        <data type="string"/>
+                      </element>
+                      <element name="sports:birthday">
+                        <ref name="ietf-yang-types__date-and-time"/>
+                      </element>
+                    </element>
+                  </zeroOrMore>
+                  <zeroOrMore>
+                    <element name="sports:team">
+                      <element name="sports:name">
+                        <data type="string"/>
+                      </element>
+                      <zeroOrMore>
+                        <element name="sports:player">
+                          <element name="sports:name">
+                            <data type="string"/>
+                          </element>
+                          <element name="sports:season">
+                            <ref name="example-sports__season"/>
+                          </element>
+                          <interleave>
+                            <element name="sports:number">
+                              <data type="unsignedShort"/>
+                            </element>
+                            <optional>
+                              <element name="sports:scores">
+                                <data type="unsignedShort"/>
+                              </element>
+                            </optional>
+                          </interleave>
+                        </element>
+                      </zeroOrMore>
+                    </element>
+                  </zeroOrMore>
+                </interleave>
+              </element>
+            </optional>
+          </start>
+        </grammar>
+      </interleave>
+    </element>
+  </start>
+</grammar>

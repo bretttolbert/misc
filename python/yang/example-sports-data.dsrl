@@ -1,2 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dsrl:maps xmlns:dsrl="http://purl.oclc.org/dsdl/dsrl" xmlns:sports="http://example.com/example-sports" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0"><dsrl:element-map><dsrl:parent>/nc:data/sports:sports/sports:team/sports:player</dsrl:parent><dsrl:name>sports:scores</dsrl:name><dsrl:default-content>0</dsrl:default-content></dsrl:element-map></dsrl:maps>
+<dsrl:maps xmlns:dsrl="http://purl.oclc.org/dsdl/dsrl" xmlns:sports="http://example.com/example-sports" xmlns:nc="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <dsrl:element-map>
+    <dsrl:parent>/nc:data/sports:sports/sports:team/sports:player</dsrl:parent>
+    <dsrl:name>sports:scores</dsrl:name>
+    <dsrl:default-content>0</dsrl:default-content>
+  </dsrl:element-map>
+</dsrl:maps>
