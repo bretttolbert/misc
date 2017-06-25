@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="utf-8"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" xmlns:nma="urn:ietf:params:xml:ns:netmod:dsdl-annotations:1" xmlns:sports="http://example.com/example-sports" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes"><define name="ietf-yang-types__date-and-time"><data type="string"><param name="pattern">\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(\.\d+)?(Z|[\+\-]\d{2}:\d{2})</param></data></define><define name="example-sports__season"><data type="string"/></define></grammar>
