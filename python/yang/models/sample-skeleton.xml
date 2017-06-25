@@ -1,2 +1,17 @@
-<?xml version='1.0' encoding='UTF-8'?>
-<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0"><sports xmlns="http://example.com/example-sports"><person><name /><birthday /></person><team><name /><player><name /><season /><number /></player></team></sports></data>
+<?xml version="1.0" encoding="UTF-8"?>
+<data xmlns="urn:ietf:params:xml:ns:netconf:base:1.0">
+  <sports xmlns="http://example.com/example-sports">
+    <person>
+      <name/>
+      <birthday/>
+    </person>
+    <team>
+      <name/>
+      <player>
+        <name/>
+        <season/>
+        <number/>
+      </player>
+    </team>
+  </sports>
+</data>
