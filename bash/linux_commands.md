@@ -657,14 +657,19 @@ Source: http://www.cesareriva.com/install-tftp-server-on-linux/
 
 Add a user
 ```sudo useradd admin```
+
 Set password
 ```sudo passwd admin```
+
 Add a user to sudoers
 ```sudo adduser admin sudo```
+
 Delete a user
 ```sudo userdel admin```
+
 Remove user from suders
 ```sudo deluser admin sudo```
+
 Enable the root account
 ```sudo passwd root```
 
