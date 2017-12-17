@@ -1,0 +1,9 @@
+#!/bin/bash
+#deps: sudo apt-get install xdotool xbase-clients
+#prerequisite: uncheck "Use colors from system theme"
+source colors
+xdotool key Ctrl+Shift+T
+rand=$(( RANDOM % ${#colors[@]}))
+color=${colors[$rand]}l
+xdotool type "echo -ne '\e]11;$color\a'"
+xdotool key Return

@@ -1,0 +1,10 @@
+#!/bin/bash
+colors[0]="#263238" #material Blue Grey 900
+colors[1]="#006064" #material Cyan 900
+colors[2]="#4A148C" #material Purple 900
+colors[3]="#880E4F" #material Pink 900
+colors[4]="#B71C1C" #material Red 900
+colors[5]="#1B5E20" #material Green 900
+colors[6]="#1A237E" #material Indigo 900
+colors[7]="#004D40" #material Teal 900
+colors[8]="#3E2723" #material Brown 900
