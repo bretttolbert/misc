@@ -7,13 +7,15 @@ from pygame.locals import *
 
 DEBUG = True
 SCREEN_SIZE = (500, 500)
+SCREENX, SCREENY = SCREEN_SIZE
 
 pygame.init()
 
 screen = pygame.display.set_mode(SCREEN_SIZE, 0, 32)
 pygame.display.set_caption('Beetles')
 
-background= pygame.image.load('sand.png').convert()
+background= pygame.image.load('desert.jpg').convert()
+background = pygame.transform.scale(background, SCREEN_SIZE)
 chopsticks_open = pygame.image.load('chopsticks_open.png').convert_alpha()
 chopsticks_closed = pygame.image.load('chopsticks_closed.png').convert_alpha()
 cursor = chopsticks_open
