@@ -49,41 +49,41 @@ grep --include=\*.{txt,robot} -rs "Get " .
 
 
 Install Java JDK
+```
 sudo add-apt-repository ppa:openjdk-r/ppa
 sudo apt-get update
 sudo apt-get install openjdk-8-jdk
 sudo update-alternatives --config java
 sudo update-alternatives --config javac
+```
 
 See which process is using a port
-lsof -i :5000
+```lsof -i :5000```
 
 Nmap scan of local network
-nmap -sP 192.168.1.0/24
+```nmap -sP 192.168.1.0/24```
 
 Nmap TCP SYN scan of host
-nmap -sS 10.6.199.5
+```nmap -sS 10.6.199.5```
 
 
 Change to the parent directory
-cd ..
+```cd ..```
 
 Change to the previous directory
-cd -
+```cd -```
 
 List the 10 most recently entered commands
-history 10
+```history 10```
 
 Search command history
-history | grep <pattern>
+```history | grep <pattern>```
 
-Open GUI File Browser at the current directory (distros w/ Gnome window mgr)
-nautilus .
-
-Open GUI File Browser at the current directory (distros w/ XFCE window mgr)
-thunar .
+Open GUI File Browser at the current directory using the user's default application
+```xdg-open .```
 
 Configure firewall
+```
 iptables -D INPUT 6
 iptables --list
 service iptables save
@@ -91,52 +91,54 @@ iptables-save > /etc/sysconfig/iptables
 iptables -A INPUT -j DROP
 iptables -A OUTPUT -j DROP
 iptables -A FORWARD -j DROP
-
 iptables -I INPUT 6 -p tcp --dport 443 -j ACCEPT
 service iptables save
+```
 
 Search for packages to install (RHEL)
-yum list <package-name>
+```yum list <package-name>```
 Note: If you don't know the exact name, use wildcards e.g. yum list *gtk*
 
 Install a package (RHEL)
-su -c 'yum -y install <package-name>' 
+```su -c 'yum -y install <package-name>' ```
 
 Search for packages to install (Debian)
-apt-cache search <package-name>
+```apt-cache search <package-name>```
 Note: You don't need to use wildcards, it will list partial matches.
 
 Search for packages with names beginning with "tcl"
-apt-cache search ^tcl
+```apt-cache search ^tcl```
 
 Install a package (Debian)
-sudo apt-get install <package-name>
+```sudo apt-get install <package-name>```
 
 Add a repository (Debian)
+```
 sudo vim /etc/apt/sources.list
 sudo apt-get update
+```
 
 Add a PPA (Ubuntu)
-sudo add-apt-repository ppa:videolan/stable-daily
+```sudo add-apt-repository ppa:videolan/stable-daily```
 
 Install apt-file
-sudo apt-get install apt-file
+```sudo apt-get install apt-file```
 
 Search all packages for filename
-apt-file search filename
+```apt-file search filename```
 
 Remove and purge packages matching wildcard
-sudo apt-get remove --purge vlc*
+```sudo apt-get remove --purge vlc*```
 
 Once I got an error installing VLC. I removed the Universe repository, ran apt-get update, and then I was able to install VLC successfully.
 
-jjkkj
 Translate characters
-echo 'I LovE linuX. one is better Than 2' | tr "a-z" "A-Z"
+```echo 'I LovE linuX. one is better Than 2' | tr "a-z" "A-Z"```
 
-top
+```top```
 Shows memory usage of a proess.
 
+```
 /
   etc
     crontab    
@@ -161,46 +163,57 @@ Shows memory usage of a proess.
   var
     www
       html
+```
 
 Display interface status
-ifconfig -a
-
+```ifconfig -a```
 
 grep with 2 lines of trailing context
+```
 pi@raspberrypi ~ $ ifconfig | grep -A 2 "eth0"
 eth0      Link encap:Ethernet  HWaddr b8:27:eb:ef:75:88
           inet addr:10.17.127.200  Bcast:10.17.127.255  Mask:255.255.255.0
           UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
 pi@raspberrypi ~ $
+```
 
-btolbert@xubuntu:~/Perforce/btolbert.lnx.dev3/aos/rel/R11.1/R11.1-M/test/RobotFramework$ grep -r --color='auto' -P -n "[\x81]" .
-
+```
+$ grep -r --color='auto' -P -n "[\x81]" .
+```
 
 
 Display the first two lines of a file:
 Method 1:
+```
 pi@raspberrypi ~ $ head -n 2 wxtest.py
 #!/usr/bin/env pythonf
 import wx
 pi@raspberrypi ~ $
-
+```
 
 Method 2:
+```
 pi@raspberrypi ~ $ cat wxtest.py | sed -n '1,2p'
 #!/usr/bin/env python
 import wx
 pi@raspberrypi ~ $
+```
 
 sed flags:
+```
 -r enable extended regular expressions (requires less escaping)
 -n quiet mode (implicit printing is disabled)
 -e expression
 -i edit files in place
+```
 
 sed commands
+```
 s search and replace
 p print
+```
 
+```
 grep [OPTIONS] PATTERN [FILE...]
 Options:
 -r recursive
@@ -212,48 +225,57 @@ Options:
 -A <num> print num lines of trailing context
 -B <num> print num lines of leading context
 -C <num> print num lines of output context
+```
 
 Recursively search .cpp and .h files for "define" (case insensitive)
 ```grep -riI --include="*.{cpp,h}" define .```
 
 Display the last line of a file:
+```
 pi@raspberrypi ~ $ tail -n 1 /var/log/dmesg
 [   23.748486] bcm2835-cpufreq: switching to governor ondemand
 pi@raspberrypi ~ $
+```
 
 Use WiringPi to display status of GPIO 0
+```
 pi@raspberrypi ~ $ gpio readall | grep "GPIO 0"
 |      0   |  17  |  11  | GPIO 0 | IN   | Low   |
 pi@raspberrypi ~ $
+```
 
 Display the value ("High" or "Low") of GPIO 0
+```
 pi@raspberrypi ~ $ gpio readall | grep "GPIO 0" | sed -e 's/\s*|\s*/\n/g' | sed -n '7p'
 Low
 pi@raspberrypi ~ $
+```
 
 Display IP address of eth0
+```
 ifconfig | grep -A 2 "eth0" | sed -n '2p' | grep -o '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*' | sed -n '1p'
+```
 
 Convert tabs to spaces
-expand -t 4 src-tabs.py > src-spaces.py
+```expand -t 4 src-tabs.py > src-spaces.py```
 
 Another way
-sed -i 's/\t/    /g' <file>
+```sed -i 's/\t/    /g' <file>```
 
 Remove blank lines
 ```sed '/^\s*$/d' main.cpp > main2.cpp```
 
 Combine stderr (2) and stdout (1) into the stdout stream for further manipulation
-g++ lots_of_errors.cpp 2>&1 | head
+```g++ lots_of_errors.cpp 2>&1 | head```
 
->& is the syntax to redirect a stream to another file descriptor.
+```>&``` is the syntax to redirect a stream to another file descriptor.
 0 is stdin. 1 is stdout. 2 is stderr.
 
 Append (send in addition)
-echo "some text" >> file.txt
+```echo "some text" >> file.txt```
 
 Replace (send to as a whole completed file)
-echo "some text" > file.txt
+```echo "some text" > file.txt```
 
 Trim leading and trailing whitespace
 ```echo " test test " | sed -e 's/^ *//g' -e 's/ *$//g'```
@@ -262,10 +284,10 @@ Remove all whitespace
 ```echo " test test " | tr -d ' '```
 
 If you're launching a GUI program from an SSH terminal, you may need to run the following command first:
-export DISPLAY=:0 
+```export DISPLAY=:0 ```
 
 
-curl http://www.bretttolbert.com/downloads/map.min.json | python -m simplejson.tool
+```curl http://www.bretttolbert.com/downloads/map.min.json | python -m simplejson.tool```
 
 
 Extract a tar.gz achive
@@ -284,29 +306,31 @@ f file
 ```
 
 Create a virtual python environment with specified interpreter
-virtualenv -p /usr/bin/python2.6 <path/to/new/virtualenv/>
+```virtualenv -p /usr/bin/python2.6 <path/to/new/virtualenv/>```
 
 Turn off system bell
-xset b off
+```xset b off```
 
 Stop/Start/Restart networking (RHEL)
+```
 sudo service network stop
 sudo service network start
 sudo service network restart
+```
 
 Stop/Start/Restart networking (Debian)
+```
 sudo service networking stop
 sudo service networking start
 sudo service networking restart
+```
 
-Other service names:
-ntp, pure-ftpd, nginx
 
 List status of all services (ubuntu):
-services --status-all
+```services --status-all```
 
 Edit network configuration (Debian)
-sudo vim /etc/network/interfaces
+```sudo vim /etc/network/interfaces```
 
 Find files matching a pattern and delete them (note the use of xargs)
 ```find -type f | grep "RcObject.*\.c" | xargs rm -f```
@@ -327,96 +351,100 @@ Install a Debian package directly
 ```sudo dpkg -i package.deb```
 
 Open Raspberry Pi configuration menu
-sudo raspi-config
+```sudo raspi-config```
 
 Modify Raspberry Pi configuration file
-sudo vim /boot/config.txt
+```sudo vim /boot/config.txt```
 
 Edit bash configuration file
-vim ~/.bashrc
+```vim ~/.bashrc```
 
 Edit vim configuration file
-vim ~/.vimrc
+```vim ~/.vimrc```
 
 Edit xserver configuration file
-vim ~/.xinitrc
+```vim ~/.xinitrc```
 
 Edit SSH server configuration file
-sudo vim /etc/ssh/sshd_config
+```sudo vim /etc/ssh/sshd_config```
 
 SSH with verbose output for troubleshooting
-ssh -v user@host
+```ssh -v user@host```
 
 Add user to group
-usermod -a -G group user
+```usermod -a -G group user```
 
 Remove user from group
-gpasswd -d user group
+```gpasswd -d user group```
 
 View syslog
-tail -f /var/log/syslog
+```tail -f /var/log/syslog```
 
 View auth log
-tail -f /var/log/auth.log
+```tail -f /var/log/auth.log```
 
 Play a video (Raspberry Pi)
-omxplayer myvideo.mp4
+```omxplayer myvideo.mp4```
 
 View an image (Raspberry Pi)
-gpicview myimage.jpg
+```gpicview myimage.jpg```
 
 Shutdown a linux computer immediately
-sudo shutdown now
+```sudo shutdown now```
 
 List files sorted by the 3rd column (owner)
-ls -l | sort -k 2
+```ls -l | sort -k 2```
 
 List files sorted by the 4th column (size)
-ls -l | sort -k 5 -n
+```ls -l | sort -k 5 -n```
 
 List files with classifier (* after executable files)
-ls -F
+```ls -F```
 
 List all the groups that a user belongs to
-groups <username>
-
-
+```groups <username>```
 
 Determine where a program resides
-$ which tclsh
+```$ which tclsh
 /usr/bin/tclsh
 $ whereis tclsh
 tclsh: /usr/bin/tclsh8.5 /usr/bin/tclsh /usr/bin/X11/tclsh8.5 /usr/bin/X11/tclsh /usr/share/man/man1/tclsh.1.gz 
+```
 
 List available Java JREs
-update-java-alternatives -l
+```update-java-alternatives -l```
 
 Pick desired Java JRE
-sudo update-alternatives --config java
+```sudo update-alternatives --config java```
 
 List all exported variables and functions
-export -p
+```export -p```
 
 To syntax highlight a source file (html output format)
+```
 #!/bin/bash
 export WWW_ROOT=/usr/share/nginx/www
 pygmentize -f html -O full,style=manni -o $WWW_ROOT/pyg.html $1
+```
 
 To see all pygments filters, lexers, and styles
-pygmentize -L | less
+```pygmentize -L | less```
 
 To remove all IP addresses from an interface
-sudo ip addr flush dev eth1
+```sudo ip addr flush dev eth1```
 
 To display the routing table you can use any of the following methods:
+```
 sudo route -n
 netstat -rn
 ip route list
+```
 
 Add a static route
-ip route add 10.10.10.0/24 via 192.168.1.254 dev eth1
+```ip route add 10.10.10.0/24 via 192.168.1.254 dev eth1```
 
 netstat options
+```
 -r : kernel IP routing table
 -n : numeric addresses
 -i : interface stats
@@ -424,28 +452,37 @@ netstat options
 -u : UDP
 -t : TCP
 -a : All
+```
 
 Display X monitor infok
-xrandr
+```xrandr```
 
 Set display position
-xrandr --output VBOX0 --left-of VBOX1
+```xrandr --output VBOX0 --left-of VBOX1```
 
 Set screen resolution
-http://www.ubuntugeek.com/how-change-display-resolution-settings-using-xrandr.html
 Step 1 - copy Modeline from output of
+```
 cvt 1920 1080
+```
 Step 2 - Add a new mode
+```
 xrandr --newmode <Modeline>
 $ xrandr --newmode "1920x1080_60.00"   173.00  1920 2048 2248 2576  1080 1083 1088 1120 -hsync +vsync
+```
 Step 3 - Add mode to monitor
+```
 xrandr --addmode VBOX0 <ModeName>
 $ xrandr --addmode VBOX0 1920x1080_60.00
+```
 Step 4 - Set monitor mode
+```
 xrandr --output VBOX0 --mode <ModeName)
+```
+http://www.ubuntugeek.com/how-change-display-resolution-settings-using-xrandr.html
 
 A good way to inspect what a command is
-type <cmd>
+```type <cmd>```
 If it's a program or script, it will give you it's location. If it's an alias, it will tell you what it's aliased to, if it's a function, it will print the function; otherwise, it will tell you if it is a built-in or a keyword.
 
 Links:
