@@ -1,5 +1,7 @@
-Find and replace
-```find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'```
+Recursive find and replace:
+```
+find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'
+```
 
 https://linux.die.net/man/7/audit.rules
 
@@ -486,11 +488,12 @@ A good way to inspect what a command is
 If it's a program or script, it will give you it's location. If it's an alias, it will tell you what it's aliased to, if it's a function, it will print the function; otherwise, it will tell you if it is a built-in or a keyword.
 
 Links:
-https://wiki.debian.org/NetworkConfiguration
-https://wiki.debian.org/NetworkConfiguration#Bringing_up_an_interface_without_an_IP_address
-http://askubuntu.com/questions/62681/how-do-i-setup-dual-monitors-in-xfce
+* https://wiki.debian.org/NetworkConfiguration
+* https://wiki.debian.org/NetworkConfiguration#Bringing_up_an_interface_without_an_IP_address
+* http://askubuntu.com/questions/62681/how-do-i-setup-dual-monitors-in-xfce
 
 Set up an FTP server (pure-ftpd):
+```
 #install pure-ftpd (for Polycom phone configs)
 #add universe repository (if needed)
 #append this to /etc/apt/sources.list:
@@ -516,59 +519,65 @@ sudo ln -s /etc/pure-ftpd/pureftpd.passwd /etc/pureftpd.passwd
 sudo ln -s /etc/pure-ftpd/pureftpd.pdb /etc/pureftpd.pdb
 sudo ln -s /etc/pure-ftpd/conf/PureDB /etc/pure-ftpd/auth/PureDB
 sudo service pure-ftpd restart
-
+```
 
 
 Display current logged in user's username
-$ whoami
+```$ whoami```
 
 List all currently logged in users (two different ways)
+```
 $ w
 $ who
+```
 
 Time a command (measure execution time)
-$ time my_script.sh
+```$ time my_script.sh
 
 real    0m17.401s
 user    0m3.076s
 sys     0m4.384s
+```
 
 Display current date and time
+```
 $ date
 Sun Mar  9 17:01:08 CDT 2014
-
+```
 
 
 Set date and time
-date -s "2 OCT 2006 18:00:00"
+```date -s "2 OCT 2006 18:00:00"```
 
 Display NTP associations
-$ ntpq -p
+```$ ntpq -p```
 
 Display NTP date
-$ ntpdate
+```$ ntpdate```
 
 Check if a process (ntpd) is running:
-$ ps -f -C ntpd
+```$ ps -f -C ntpd```
 
 Grep manpage (for the ps command) for a particular option (-f) with 2 lines of trailing context (--after-context=NUM or -A NUM)
-$ man ps | grep "\-f" -A2
+```$ man ps | grep "\-f" -A2```
 
 Set the raw sockets capability on the python interpreter executable:
+```
 sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/python2.7
 sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/sbin/tcpdump
+```
 
 Recursively change owner of a directory
-sudo chown -R user:pass dir
+```sudo chown -R user:pass dir```
 
 Read crontab manual page
-man crontab
+```man crontab```
 
 Display your crontab
-crontab -l
+```crontab -l```
 
 Edit your crontab (or create one if it doesn't already exist):
-crontab -e
+```crontab -e
 
 crontab syntax:
 *     *     *   *    *        command to be executed
@@ -579,36 +588,39 @@ crontab syntax:
 |     |     +--------- day of        month (1 - 31)
 |     +----------- hour (0 - 23)
 +------------- min (0 - 59)
+```
 
 crontab quick reference:
 http://www.adminschoice.com/crontab-quick-reference/
 
 Display system uptime
+```
 brett@OPGX270MVT1:~$ uptime
  14:58:32 up  2:00,  4 users,  load average: 0.18, 0.10, 0.12
+```
 
 List all mounted devices
-mount
+```mount```
 
 List usb verbosely
-lsusb -v
+```lsusb -v```
 
-Open a serial console to the specified serial port
-cu -l /dev/ttyS0 -s 9600
+Open a serial console to the specified serial port using the ```cu``` (call up) program:
+```cu -l /dev/ttyS0 -s 9600```
 
 To exit serial console (cu), type:
-~.
+```~.```
 
 Perform a basic port scan with nmap
-nmap -A -T4 <host>
+```nmap -A -T4 <host>```
 
 Switch between tabs in gnome-terminal, gedit, and some other programs
 ```Alt + n```
 Where n is the tab number. 1=1st tab, 2=2nd tab, etc.
 
 random vs. urandom
-random - will block if the entropy pool is empty
-urandom - will generate data using an algorithm if entropy pool is empty, will never block.
+* random - will block if the entropy pool is empty
+* urandom - will generate data using an algorithm if entropy pool is empty, will never block.
 http://stupefydeveloper.blogspot.com/2007/12/random-vs-urandom.html
 
 
@@ -618,15 +630,20 @@ e.g.
 ```dd if=/dev/urandom of=testfile.biz bs=1M count=1```
 
 Clean package manager (try this if you are having issues):
-sudo apt-get clean
+```sudo apt-get clean```
 
 Install a TFTP server
+```
 sudo apt-get install tftpd-hpa
+```
 Create root directory and set the permissions (the lazy way)
+```
 sudo mkdir /var/tftpboot
 sudo chmod 777 /var/tftpboot
+```
 
 Edit configuration file
+```
 /etc/default/tftpd-hpa
 TFTP_USERNAME="tftp"
 TFTP_DIRECTORY="/var/tftpboot"
@@ -635,20 +652,21 @@ TFTP_OPTIONS="-s -c -v"
 RUN_DAEMON="yes"
 Restart service
 sudo service tftpd-hpa start
+```
 Source: http://www.cesareriva.com/install-tftp-server-on-linux/
 
 Add a user
-sudo useradd admin
+```sudo useradd admin```
 Set password
-sudo passwd admin
+```sudo passwd admin```
 Add a user to sudoers
-sudo adduser admin sudo
+```sudo adduser admin sudo```
 Delete a user
-sudo userdel admin
+```sudo userdel admin```
 Remove user from suders
-sudo deluser admin sudo
+```sudo deluser admin sudo```
 Enable the root account
-sudo passwd root
+```sudo passwd root```
 
 http://en.wikipedia.org/wiki/Setuid
 
@@ -679,8 +697,7 @@ Step 1. Determine the MAC addresses of the interfaces (using ifconfig -a)
 Step 2. Edit /etc/udev/rules.d/70-persistent-net.rules
 http://www.cyberciti.biz/faq/howto-linux-rename-ethernet-devices-named-using-udev/
 
-
-
+```
 Configuration file '/etc/X11/Xsession.d/98vboxadd-xclient'
  ==> Modified (by you or by a script) since installation.
  ==> Package distributor has shipped an updated version.
@@ -694,35 +711,23 @@ Configuration file '/etc/X11/Xsession.d/98vboxadd-xclient'
 Setting up virtualbox-guest-dkms (4.3.36-dfsg-1+deb8u1ubuntu1.14.04.1) ...
 Loading new virtualbox-guest-4.3.36 DKMS files...
 Building only for 3.13.0-24-generic
-
-
-btolbert@vm4:~/Perforce/btolbert.cn.lnx.dev4/team/MVT/mvt_myacmed$ 
-btolbert@vm4:~/Perforce/btolbert.cn.lnx.dev4/team/MVT/mvt_myacmed$ make test
-Sending build context to Docker daemon 113.9 MB
-Step 1 : FROM docker.brett.com:5000/osa-ne/service-kit:8
-Get https://docker.brett.com:5000/v1/_ping: tls: oversized record received with length 20527
--e \e[0m
-\e[1m\e[31m(E) Failed to build Docker image, mvt_myacmed_default, from build/default/Dockerfile.  Aborting with error code of 1...\e[0m
-
-make: *** [out/default/.dockerImage] Error 1
-btolbert@vm4:~/Perforce/btolbert.cn.lnx.dev4/team/MVT/mvt_myacmed$ 
+```
 
 
 Check for incoming packets from a host
-sudo tcpdump -nnxX -i eth0 src 10.17.199.251
+```sudo tcpdump -nnxX -i eth0 src 10.17.199.251```
 
 Scan a subnet for open web servers
-nmap -p 80 --open -sV 10.17.199.0/24
+```nmap -p 80 --open -sV 10.17.199.0/24```
 
 Count the number of lines of output
 I.e. the number of warning messages generated by the first command
-pylama -l pep8,import_order src test | wc -l
+```pylama -l pep8,import_order src test | wc -l```
 
 pep8 comes with pylint package
 don't use pycodestyle, can't configure max-line-length
 
 ```pylama --options tox.ini verb_conjugate_fr test```
-
 
 Delete all .pyc files
 ```find . -type f -name "*.pyc" | xargs rm```
