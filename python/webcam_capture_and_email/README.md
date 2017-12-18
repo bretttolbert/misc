@@ -3,6 +3,8 @@ Basic usage:
 python webcam_capture_and_email.py --toaddr="recipient@gmail.com" --username="sender@gmail.com" --password="topsecret" --subject="webcam test"
 ```
 
+By default it assumes Gmail and uses ```--smtpserver="smtp.gmail.com:587"```. Try it once, then check sender inbox for a "Review blocked sign-in attempt" message from Google. It will give you a link to "allow access to insecure apps".
+
 Help:
 ```
 python webcam_capture_and_email.py -h
