@@ -3,6 +3,31 @@ Recursive find and replace:
 find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'
 ```
 
+GPG commands:
+
+List keys
+```gpg --list-keys --keyid-format short```
+
+List secret keys
+```gpg --list-keys --keyid-format short```
+
+Export public key
+```
+gpg --armor --export bretttolbert@gmail.com > mynewkey.asc
+```
+
+Delete a key pair
+```
+gpg --delete-secret-keys ID
+gpg --deley-key ID
+```
+
+Generate a new key pair with full options:
+```
+gpg --full-gen-key
+```
+
+
 Mate commands:
 
 Logout
