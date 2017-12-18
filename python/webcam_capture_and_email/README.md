@@ -3,6 +3,44 @@ Basic usage:
 python webcam_capture_and_email.py --toaddr="recipient@gmail.com" --username="sender@gmail.com" --password="topsecret" --subject="webcam test"
 ```
 
+Help:
+```
+python webcam_capture_and_email.py -h
+usage: webcam_capture_and_email.py [-h] [--imgdir IMGDIR] [--toaddr TOADDR]
+                                   [--fromaddr FROMADDR] [--subject SUBJECT]
+                                   [--smtpserver SMTPSERVER]
+                                   [--username USERNAME] [--password PASSWORD]
+                                   [--capture_src CAPTURE_SRC]
+                                   [--delay_ms DELAY_MS]
+                                   [--cam_res_x CAM_RES_X]
+                                   [--cam_res_y CAM_RES_Y]
+                                   [--cam_dev_id CAM_DEV_ID]
+                                   [--burst_frames BURST_FRAMES]
+
+optional arguments:
+  -h, --help            show this help message and exit
+  --imgdir IMGDIR       local image directory
+  --toaddr TOADDR       destination email address
+  --fromaddr FROMADDR   source email address
+  --subject SUBJECT     email subject
+  --smtpserver SMTPSERVER
+                        SMTP server
+  --username USERNAME   username
+  --password PASSWORD   password
+  --capture_src CAPTURE_SRC
+                        capture source
+  --delay_ms DELAY_MS   delay milliseconds
+  --cam_res_x CAM_RES_X
+                        camera resolution x
+  --cam_res_y CAM_RES_Y
+                        camera resolution y
+  --cam_dev_id CAM_DEV_ID
+                        camera device id
+  --burst_frames BURST_FRAMES
+                        number of images to take in a burst
+
+```
+
 Supported capture sources:
 
 * fswebcam      # Linux option 1
