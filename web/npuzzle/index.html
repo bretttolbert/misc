@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="npuzzle.js"></script>
+<style type="text/css">
+#container { 
+    text-align: center;
+    margin-top: 100px;
+}
+table {
+	text-align: center;
+	table-layout: fixed;
+	width: 500px;
+	height: 500px;
+	margin: auto;
+	border: 2px solid #000000;
+	background-color: #ffffff;
+}
+tr td {
+	border: 2px solid #000000;
+}
+</style>
+</head>
+<body onload="init()">
+<div id="container">
+    <div id="puzzle"></div>
+    <div id="controls">
+    n=
+    <select id="nselect" onchange="init()">
+    <option>3</option>
+    <option>8</option>
+    <option selected="selected">15</option>
+    <option>24</option>
+    <option>35</option>
+    <option>48</option>
+    </select>
+    <input type="button" value="shuffle" onclick="shuffle()"/>
+    </div>
+</div>
+</body>
+</html>
