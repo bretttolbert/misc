@@ -3,6 +3,13 @@ Recursive find and replace:
 find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'
 ```
 
+Mate commands:
+
+Logout
+```
+mate-session-save --force-logout
+```
+
 https://linux.die.net/man/7/audit.rules
 
 ```ln -s /path/to/file /path/to/symlink```
@@ -113,6 +120,9 @@ Search for packages with names beginning with "tcl"
 
 Install a package (Debian)
 ```sudo apt-get install <package-name>```
+
+List all installed packages and filter by name
+```apt list --installed | grep python```
 
 Add a repository (Debian)
 ```
