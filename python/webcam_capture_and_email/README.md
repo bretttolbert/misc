@@ -43,9 +43,9 @@ optional arguments:
 
 Supported capture sources:
 
-* fswebcam      # Linux option 1
-* pygame        # Linux option 2 (PyGame + OpenCV)
-* videocapture  # Windows option <http://videocapture.sourceforge.net/>
+* ```fswebcam```      # Linux option 1
+* ```pygame```        # Linux option 2 (PyGame + OpenCV)
+* ```videocapture```  # Windows option <http://videocapture.sourceforge.net/>
 
 Installing fswebcam:
 ```
