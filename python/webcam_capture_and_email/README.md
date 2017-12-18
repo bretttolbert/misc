@@ -3,7 +3,7 @@ Basic usage:
 python webcam_capture_and_email.py --toaddr="recipient@gmail.com" --username="sender@gmail.com" --password="topsecret" --subject="webcam test"
 ```
 
-By default it assumes Gmail and uses ```--smtpserver="smtp.gmail.com:587"```. Try it once, then check sender inbox for a "Review blocked sign-in attempt" message from Google. It will give you a link to "allow access to insecure apps". Using your primary google account for sending is not recommended. Instead, create a throwaway account to use for sending. You can still have it sent to your primary email account. 
+By default it assumes Gmail and uses ```--smtpserver="smtp.gmail.com:587"```. Try it once, then check sender inbox for a "Review blocked sign-in attempt" message from Google. It will give you a link to "allow access to insecure apps". Using your primary google account for sending is possible but not recommended. Instead, create a throwaway account to use for sending. You can then use that account to send to your primary email account. 
 
 Help:
 ```
