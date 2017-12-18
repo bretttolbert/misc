@@ -9,7 +9,7 @@ List keys
 ```gpg --list-keys --keyid-format short```
 
 List secret keys
-```gpg --list-keys --keyid-format short```
+```gpg --list-secret-keys --keyid-format short```
 
 Export public key
 ```
