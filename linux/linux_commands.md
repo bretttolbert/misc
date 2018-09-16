@@ -778,3 +778,6 @@ $ nmcli -t -f IP4.DNS device show eth0
 IP4.DNS[1]:192.168.1.1
 IP4.DNS[2]:8.8.8.8
 ```
+
+Generate a .dic (dictionary) file for use with PyCharm or other InteliJ IDE
+```aspell --lang fr dump master | aspell --lang fr expand | tr ' ' '\n' > french.dic```
