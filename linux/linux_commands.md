@@ -1,12 +1,12 @@
 # About
 Miscellaneous linux commands for doing all sorts of fun stuff
 
+## Searching and string manipulation
+
 Recursive find and replace:
 ```
 find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'
 ```
-
-# Searching and string manipulation
 
 Delete all .pyc files
 ```find . -type f -name "*.pyc" | xargs rm```
@@ -164,6 +164,9 @@ Use xdotool to emulate a key press
 Open a file in the default application
 ```xdg-open filename &```
 
+Open GUI File Browser at the current directory
+```xdg-open .```
+
 Extract a tar.gz achive
 ```tar xvzf archive.tar.gz```
 
@@ -202,6 +205,56 @@ Create a virtual python environment with specified interpreter
 Turn off system bell
 ```xset b off```
 
+Add user to group
+```usermod -a -G group user```
+
+Remove user from group
+```gpasswd -d user group```
+
+List all the groups that a user belongs to
+```groups <username>```
+
+Determine where a program resides
+```$ which tclsh
+/usr/bin/tclsh
+$ whereis tclsh
+tclsh: /usr/bin/tclsh8.5 /usr/bin/tclsh /usr/bin/X11/tclsh8.5 /usr/bin/X11/tclsh /usr/share/man/man1/tclsh.1.gz 
+```
+
+List all exported variables and functions
+```export -p```
+
+Time a command (measure execution time)
+```$ time my_script.sh
+
+real    0m17.401s
+user    0m3.076s
+sys     0m4.384s
+```
+
+Display current date and time
+```
+$ date
+Sun Mar  9 17:01:08 CDT 2014
+```
+
+Set date and time
+```date -s "2 OCT 2006 18:00:00"```
+
+Display NTP associations
+```$ ntpq -p```
+
+Display NTP date
+```$ ntpdate```
+
+Check if a process (ntpd) is running:
+```$ ps -f -C ntpd```
+
+Generate a dummy data file with dd
+```dd if=/path/to/input of=/path/to/output [options]```
+e.g.
+```dd if=/dev/urandom of=testfile.biz bs=1M count=1```
+
 ## Terminal
 
 Shorten your bash terminal prompt
@@ -226,9 +279,6 @@ List the 10 most recently entered commands
 
 Search command history
 ```history | grep <pattern>```
-
-Open GUI File Browser at the current directory using the user's default application
-```xdg-open .```
 
 ## Package management
 
@@ -299,6 +349,13 @@ Nmap TCP SYN scan of host
 
 Display interface status
 ```ifconfig -a```
+
+To display the routing table you can use any of the following methods:
+```
+sudo route -n
+netstat -rn
+ip route list
+```
 
 Check for incoming packets from a host
 ```sudo tcpdump -nnxX -i eth0 src 10.17.199.251```
@@ -412,30 +469,11 @@ Edit SSH server configuration file
 SSH with verbose output for troubleshooting
 ```ssh -v user@host```
 
-Add user to group
-```usermod -a -G group user```
-
-Remove user from group
-```gpasswd -d user group```
-
 View syslog
 ```tail -f /var/log/syslog```
 
 View auth log
 ```tail -f /var/log/auth.log```
-
-List all the groups that a user belongs to
-```groups <username>```
-
-Determine where a program resides
-```$ which tclsh
-/usr/bin/tclsh
-$ whereis tclsh
-tclsh: /usr/bin/tclsh8.5 /usr/bin/tclsh /usr/bin/X11/tclsh8.5 /usr/bin/X11/tclsh /usr/share/man/man1/tclsh.1.gz 
-```
-
-List all exported variables and functions
-```export -p```
 
 To syntax highlight a source file (html output format)
 ```
@@ -449,13 +487,6 @@ To see all pygments filters, lexers, and styles
 
 To remove all IP addresses from an interface
 ```sudo ip addr flush dev eth1```
-
-To display the routing table you can use any of the following methods:
-```
-sudo route -n
-netstat -rn
-ip route list
-```
 
 Add a static route
 ```ip route add 10.10.10.0/24 via 192.168.1.254 dev eth1```
@@ -507,32 +538,6 @@ Links:
 * https://wiki.debian.org/NetworkConfiguration#Bringing_up_an_interface_without_an_IP_address
 * http://askubuntu.com/questions/62681/how-do-i-setup-dual-monitors-in-xfce
 
-
-Time a command (measure execution time)
-```$ time my_script.sh
-
-real    0m17.401s
-user    0m3.076s
-sys     0m4.384s
-```
-
-Display current date and time
-```
-$ date
-Sun Mar  9 17:01:08 CDT 2014
-```
-
-Set date and time
-```date -s "2 OCT 2006 18:00:00"```
-
-Display NTP associations
-```$ ntpq -p```
-
-Display NTP date
-```$ ntpdate```
-
-Check if a process (ntpd) is running:
-```$ ps -f -C ntpd```
 
 Grep manpage (for the ps command) for a particular option (-f) with 2 lines of trailing context (--after-context=NUM or -A NUM)
 ```$ man ps | grep "\-f" -A2```
@@ -598,12 +603,6 @@ random vs. urandom
 * random - will block if the entropy pool is empty
 * urandom - will generate data using an algorithm if entropy pool is empty, will never block.
 http://stupefydeveloper.blogspot.com/2007/12/random-vs-urandom.html
-
-
-Generate a fake file with dd
-```dd if=/path/to/input of=/path/to/output [options]```
-e.g.
-```dd if=/dev/urandom of=testfile.biz bs=1M count=1```
 
 Clean package manager (try this if you are having issues):
 ```sudo apt-get clean```
