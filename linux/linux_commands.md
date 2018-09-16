@@ -3,6 +3,9 @@ Miscellaneous linux commands for doing all sorts of fun stuff
 
 ## Searching and string manipulation
 
+Find a directory by name
+```find . -name "install" -type d```
+
 Recursive find and replace:
 ```
 find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'
@@ -12,7 +15,9 @@ Delete all .pyc files
 ```find . -type f -name "*.pyc" | xargs rm```
 
 Find files matching a pattern and delete them (note the use of xargs)
-```find -type f | grep "RcObject.*\.c" | xargs rm -f```
+```
+find -type f | grep "RcObject.*\.c" | xargs rm -f
+```
 
 Find - redirect error output to /dev/null
 ```find / -name "openssl.cnf" 2>/dev/null```
@@ -257,6 +262,9 @@ e.g.
 
 ## Terminal
 
+Make terminal bigger
+```stty cols 220 rows 60```
+
 Shorten your bash terminal prompt
 ```export PS1='\u@\h$ '```
 
@@ -453,6 +461,15 @@ Low
 pi@raspberrypi ~ $
 ```
 
+## Docker
+
+```docker exec -it rsyslog-x86-64 "/bin/bash"```
+
+```docker ps --no-trunc```
+
+```docker rm $(docker ps -a -q)```
+
+
 ## Miscellaneous
 
 Use pico2wave to convert text to speech, output to a Wav file and play it
@@ -466,6 +483,22 @@ Options for languages :
 * es-ES   Spanish
 * fr-FR   French
 * it-IT   Italian
+
+Generate a .dic (dictionary) file for use with PyCharm or other InteliJ IDE
+```aspell --lang fr dump master | aspell --lang fr expand | tr ' ' '\n' > french.dic```
+
+To syntax highlight a source file (html output format)
+```
+#!/bin/bash
+export WWW_ROOT=/usr/share/nginx/www
+pygmentize -f html -O full,style=manni -o $WWW_ROOT/pyg.html $1
+```
+
+To see all pygments filters, lexers, and styles
+```pygmentize -L | less```
+
+Use ImageMagick convert to create an animated gif from a directory of numbered JPEG images
+```convert -delay 20 -loop 0 *.jpg myimage.gif```
 
 If you're launching a GUI program from an SSH terminal, you may need to run the following command first:
 ```export DISPLAY=:0 ```
@@ -508,16 +541,6 @@ View syslog
 
 View auth log
 ```tail -f /var/log/auth.log```
-
-To syntax highlight a source file (html output format)
-```
-#!/bin/bash
-export WWW_ROOT=/usr/share/nginx/www
-pygmentize -f html -O full,style=manni -o $WWW_ROOT/pyg.html $1
-```
-
-To see all pygments filters, lexers, and styles
-```pygmentize -L | less```
 
 To remove all IP addresses from an interface
 ```sudo ip addr flush dev eth1```
@@ -732,8 +755,6 @@ don't use pycodestyle, can't configure max-line-length
 
 ```pylama --options tox.ini verb_conjugate_fr test```
 
-Generate a .dic (dictionary) file for use with PyCharm or other InteliJ IDE
-```aspell --lang fr dump master | aspell --lang fr expand | tr ' ' '\n' > french.dic```
 
 Add a host's public key to known_hosts (e.g. a local docker running a NETCONF server)
 ```
