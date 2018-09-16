@@ -357,6 +357,15 @@ netstat -rn
 ip route list
 ```
 
+```
+netstat -nux
+```
+* -n  Diplay numerically (don't resolve names)
+* -t  Display only TCP connections
+* -u  Display only UDP connections
+* -x  Unix sockets
+https://en.wikipedia.org/wiki/Netstat
+
 Check for incoming packets from a host
 ```sudo tcpdump -nnxX -i eth0 src 10.17.199.251```
 
@@ -376,6 +385,7 @@ iptables -I INPUT 6 -p tcp --dport 443 -j ACCEPT
 service iptables save
 ```
 
+Location of networking files (redhat)
 ```
 /
   etc
@@ -401,6 +411,18 @@ service iptables save
   var
     www
       html
+```
+
+## Bash scripting
+
+Bash `test` command
+https://www.ibm.com/developerworks/library/l-bash-test/index.html
+
+The unary operator -z tests for a null string, while -n or no operator at all returns True if a string is not empty. Example:
+```
+$ test -z "foo" && echo "foo"
+$ test -z "" && echo "foo"
+foo
 ```
 
 ## Raspberry Pi
@@ -432,6 +454,18 @@ pi@raspberrypi ~ $
 ```
 
 ## Miscellaneous
+
+Use pico2wave to convert text to speech, output to a Wav file and play it
+```
+pico2wave -l=en-GB -w=out.wav "The quick brown fox jumped over the lazy dog." && aplay out.wav
+```
+Options for languages :
+* en-US   English
+* en-GB   Great Britain
+* de-DE   German
+* es-ES   Spanish
+* fr-FR   French
+* it-IT   Italian
 
 If you're launching a GUI program from an SSH terminal, you may need to run the following command first:
 ```export DISPLAY=:0 ```
