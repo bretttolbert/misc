@@ -91,10 +91,6 @@ ifconfig | grep -A 2 "eth0" | sed -n '2p' | grep -o '[0-9][0-9]*\.[0-9][0-9]*\.[
 ```
 
 ```
-$ grep -r --color='auto' -P -n "[\x81]" .
-```
-
-```
 grep [OPTIONS] PATTERN [FILE...]
 Options:
 -r recursive
@@ -230,7 +226,8 @@ List all exported variables and functions
 ```export -p```
 
 Time a command (measure execution time)
-```$ time my_script.sh
+```
+$ time my_script.sh
 
 real    0m17.401s
 user    0m3.076s
@@ -254,11 +251,6 @@ Display NTP date
 
 Check if a process (ntpd) is running:
 ```$ ps -f -C ntpd```
-
-Generate a dummy data file with dd
-```dd if=/path/to/input of=/path/to/output [options]```
-e.g.
-```dd if=/dev/urandom of=testfile.biz bs=1M count=1```
 
 ## Terminal
 
@@ -347,6 +339,10 @@ Check the nameservers
 $ nmcli -t -f IP4.DNS device show eth0
 IP4.DNS[1]:192.168.1.1
 IP4.DNS[2]:8.8.8.8
+```
+Or
+```
+cat /etc/resolv.conf
 ```
 
 Nmap scan of local network
@@ -500,6 +496,11 @@ To see all pygments filters, lexers, and styles
 Use ImageMagick convert to create an animated gif from a directory of numbered JPEG images
 ```convert -delay 20 -loop 0 *.jpg myimage.gif```
 
+Generate a file containing dummy data for testing purposes
+```dd if=/path/to/input of=/path/to/output [options]```
+e.g.
+```dd if=/dev/urandom of=testfile.biz bs=1M count=1```
+
 If you're launching a GUI program from an SSH terminal, you may need to run the following command first:
 ```export DISPLAY=:0 ```
 
@@ -519,7 +520,6 @@ Force apt-get to prefer IPv4 - append the following to /etc/gai.conf:
 http://unix.stackexchange.com/questions/9940/convince-apt-get-not-to-use-ipv6-method
 gai.conf is the getaddrinfo configuration file
 http://linux.die.net/man/5/gai.conf
-
 
 Edit bash configuration file
 ```vim ~/.bashrc```
