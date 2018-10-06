@@ -3,6 +3,16 @@ Miscellaneous linux commands for doing all sorts of fun stuff
 
 ## Searching and string manipulation
 
+Shortcut for `ls -l`
+```
+ll
+```
+
+Human-readable format for sizes, e.g. 197M instead of 206354132
+```
+ll -h
+```
+
 Recursive find and replace:
 ```
 find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'
