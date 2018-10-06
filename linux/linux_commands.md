@@ -24,7 +24,7 @@ Change to the previous directory
 Shows memory usage of a proess.
 
 Create a symlink
-```ln -s /path/to/file /path/to/symlink```
+```ln -s /path/to/target /path/to/symlink```
 
 See which process is using a port
 ```lsof -i :5000```
