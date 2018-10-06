@@ -6,6 +6,6 @@ int main(int argc, char* argv[])
     std::cout << "hello foo\n";
     Rectangle rect;
     int x;
-    std::cin >> x; // Wait for ENTER so terminal will remain open when running in vscode
+    std::cin >> x; // Wait for input so that terminal will remain open when debugging in vscode
     return 0;
 }
