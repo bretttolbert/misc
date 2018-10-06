@@ -9,10 +9,8 @@ Shortcut for `ls -l`
 ll
 ```
 
-Human-readable format for sizes, e.g. 197M instead of 206354132
-```
-ll -h
-```
+Human-readable format for sizes, e.g. 197M instead of 206354132 
+``` ll -h ```
 
 Change to the parent directory
 ```cd ..```
@@ -25,6 +23,9 @@ Shows memory usage of a proess.
 
 Create a symlink
 ```ln -s /path/to/target /path/to/symlink```
+
+Show disk usage
+```du -h```
 
 See which process is using a port
 ```lsof -i :5000```
@@ -212,7 +213,6 @@ Trim leading and trailing whitespace
 Remove all whitespace
 ```echo " test test " | tr -d ' '```
 
-
 Create a virtual python environment with specified interpreter
 ```virtualenv -p /usr/bin/python2.6 <path/to/new/virtualenv/>```
 
@@ -227,6 +227,9 @@ Remove user from group
 
 List all the groups that a user belongs to
 ```groups <username>```
+
+Identify location of executable
+```which python```
 
 Determine where a program resides
 ```$ which tclsh
