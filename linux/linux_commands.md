@@ -13,6 +13,9 @@ Human-readable format for sizes, e.g. 197M instead of 206354132
 ll -h
 ```
 
+Find a directory by name
+```find . -name "install" -type d```
+
 Recursive find and replace:
 ```
 find source/DDL -type f \( -name "*.cpp" -or -name "*.hpp" \) -print0 | xargs -0 sed -i -e 's/[^o]stringstream/ostringstream/g'
@@ -22,7 +25,9 @@ Delete all .pyc files
 ```find . -type f -name "*.pyc" | xargs rm```
 
 Find files matching a pattern and delete them (note the use of xargs)
-```find -type f | grep "RcObject.*\.c" | xargs rm -f```
+```
+find -type f | grep "RcObject.*\.c" | xargs rm -f
+```
 
 Find - redirect error output to /dev/null
 ```find / -name "openssl.cnf" 2>/dev/null```
@@ -93,10 +98,6 @@ p print
 Display IP address of eth0
 ```
 ifconfig | grep -A 2 "eth0" | sed -n '2p' | grep -o '[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*\.[0-9][0-9]*' | sed -n '1p'
-```
-
-```
-$ grep -r --color='auto' -P -n "[\x81]" .
 ```
 
 ```
@@ -235,7 +236,8 @@ List all exported variables and functions
 ```export -p```
 
 Time a command (measure execution time)
-```$ time my_script.sh
+```
+$ time my_script.sh
 
 real    0m17.401s
 user    0m3.076s
@@ -260,12 +262,10 @@ Display NTP date
 Check if a process (ntpd) is running:
 ```$ ps -f -C ntpd```
 
-Generate a dummy data file with dd
-```dd if=/path/to/input of=/path/to/output [options]```
-e.g.
-```dd if=/dev/urandom of=testfile.biz bs=1M count=1```
-
 ## Terminal
+
+Make terminal bigger
+```stty cols 220 rows 60```
 
 Shorten your bash terminal prompt
 ```export PS1='\u@\h$ '```
@@ -350,6 +350,10 @@ $ nmcli -t -f IP4.DNS device show eth0
 IP4.DNS[1]:192.168.1.1
 IP4.DNS[2]:8.8.8.8
 ```
+Or
+```
+cat /etc/resolv.conf
+```
 
 Nmap scan of local network
 ```nmap -sP 192.168.1.0/24```
@@ -366,6 +370,15 @@ sudo route -n
 netstat -rn
 ip route list
 ```
+
+```
+netstat -nux
+```
+* -n  Diplay numerically (don't resolve names)
+* -t  Display only TCP connections
+* -u  Display only UDP connections
+* -x  Unix sockets
+https://en.wikipedia.org/wiki/Netstat
 
 Check for incoming packets from a host
 ```sudo tcpdump -nnxX -i eth0 src 10.17.199.251```
@@ -386,6 +399,7 @@ iptables -I INPUT 6 -p tcp --dport 443 -j ACCEPT
 service iptables save
 ```
 
+Location of networking files (redhat)
 ```
 /
   etc
@@ -411,6 +425,18 @@ service iptables save
   var
     www
       html
+```
+
+## Bash scripting
+
+Bash `test` command
+https://www.ibm.com/developerworks/library/l-bash-test/index.html
+
+The unary operator -z tests for a null string, while -n or no operator at all returns True if a string is not empty. Example:
+```
+$ test -z "foo" && echo "foo"
+$ test -z "" && echo "foo"
+foo
 ```
 
 ## Raspberry Pi
@@ -441,7 +467,49 @@ Low
 pi@raspberrypi ~ $
 ```
 
+## Docker
+
+```docker exec -it rsyslog-x86-64 "/bin/bash"```
+
+```docker ps --no-trunc```
+
+```docker rm $(docker ps -a -q)```
+
+
 ## Miscellaneous
+
+Use pico2wave to convert text to speech, output to a Wav file and play it
+```
+pico2wave -l=en-GB -w=out.wav "The quick brown fox jumped over the lazy dog." && aplay out.wav
+```
+Options for languages :
+* en-US   English
+* en-GB   Great Britain
+* de-DE   German
+* es-ES   Spanish
+* fr-FR   French
+* it-IT   Italian
+
+Generate a .dic (dictionary) file for use with PyCharm or other InteliJ IDE
+```aspell --lang fr dump master | aspell --lang fr expand | tr ' ' '\n' > french.dic```
+
+To syntax highlight a source file (html output format)
+```
+#!/bin/bash
+export WWW_ROOT=/usr/share/nginx/www
+pygmentize -f html -O full,style=manni -o $WWW_ROOT/pyg.html $1
+```
+
+To see all pygments filters, lexers, and styles
+```pygmentize -L | less```
+
+Use ImageMagick convert to create an animated gif from a directory of numbered JPEG images
+```convert -delay 20 -loop 0 *.jpg myimage.gif```
+
+Generate a file containing dummy data for testing purposes
+```dd if=/path/to/input of=/path/to/output [options]```
+e.g.
+```dd if=/dev/urandom of=testfile.biz bs=1M count=1```
 
 If you're launching a GUI program from an SSH terminal, you may need to run the following command first:
 ```export DISPLAY=:0 ```
@@ -463,7 +531,6 @@ http://unix.stackexchange.com/questions/9940/convince-apt-get-not-to-use-ipv6-me
 gai.conf is the getaddrinfo configuration file
 http://linux.die.net/man/5/gai.conf
 
-
 Edit bash configuration file
 ```vim ~/.bashrc```
 
@@ -484,16 +551,6 @@ View syslog
 
 View auth log
 ```tail -f /var/log/auth.log```
-
-To syntax highlight a source file (html output format)
-```
-#!/bin/bash
-export WWW_ROOT=/usr/share/nginx/www
-pygmentize -f html -O full,style=manni -o $WWW_ROOT/pyg.html $1
-```
-
-To see all pygments filters, lexers, and styles
-```pygmentize -L | less```
 
 To remove all IP addresses from an interface
 ```sudo ip addr flush dev eth1```
@@ -708,8 +765,6 @@ don't use pycodestyle, can't configure max-line-length
 
 ```pylama --options tox.ini verb_conjugate_fr test```
 
-Generate a .dic (dictionary) file for use with PyCharm or other InteliJ IDE
-```aspell --lang fr dump master | aspell --lang fr expand | tr ' ' '\n' > french.dic```
 
 Add a host's public key to known_hosts (e.g. a local docker running a NETCONF server)
 ```
