@@ -143,6 +143,11 @@ import wx
 pi@raspberrypi ~ $
 ```
 
+Show only unique lines (in this example, unique IP addresses in a pcap)
+```
+tshark -r capture.pcapng -T fields -e ip.src | sort -u
+```
+
 sed flags:
 ```
 -r enable extended regular expressions (requires less escaping)
