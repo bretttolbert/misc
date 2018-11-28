@@ -1,10 +1,82 @@
 # About
 Miscellaneous linux commands for doing all sorts of fun stuff
 
+## Essentials
+
+
+Shortcut for `ls -l`
+```
+ll
+```
+
+Human-readable format for sizes, e.g. 197M instead of 206354132 
+``` ll -h ```
+
+Change to the parent directory
+```cd ..```
+
+Change to the previous directory
+```cd -```
+
+```top```
+Shows memory usage of a proess.
+
+Create a symlink
+```ln -s /path/to/target /path/to/symlink```
+
+Show disk usage
+```du -h```
+
+See which process is using a port
+```lsof -i :5000```
+
+Use xdotool to emulate a key press
+```sudo apt-get install xdotool xbase-clients```
+```xdotool key ctrl+shift+t```
+
+Open a file in the default application
+```xdg-open filename &```
+
+Open GUI File Browser at the current directory
+```xdg-open .```
+
+Extract a tar.gz achive
+```tar xvzf archive.tar.gz```
+
+Extract a tar.bz2 achive
+```tar xvjf archive.tar.bz2```
+
+tar flags
+```
+x extract
+v verbose
+z bunzip (bz2)
+g gunzip (gz)
+f file
+```
+
+Logout of MATE
+```
+mate-session-save --force-logout
+```
+
+Shutdown immediately
+```sudo shutdown now```
+
+Display current logged in user's username
+```$ whoami```
+
+List all currently logged in users (two different ways)
+```
+$ w
+$ who
+```
+
 ## Searching and string manipulation
 
 Find a directory by name
 ```find . -name "install" -type d```
+
 
 Recursive find and replace:
 ```
@@ -69,6 +141,11 @@ pi@raspberrypi ~ $ cat wxtest.py | sed -n '1,2p'
 #!/usr/bin/env python
 import wx
 pi@raspberrypi ~ $
+```
+
+Show only unique lines (in this example, unique IP addresses in a pcap)
+```
+tshark -r capture.pcapng -T fields -e ip.src | sort -u
 ```
 
 sed flags:
@@ -141,65 +218,6 @@ Trim leading and trailing whitespace
 Remove all whitespace
 ```echo " test test " | tr -d ' '```
 
-## Essentials
-
-Change to the parent directory
-```cd ..```
-
-Change to the previous directory
-```cd -```
-
-```top```
-Shows memory usage of a proess.
-
-Create a symlink
-```ln -s /path/to/file /path/to/symlink```
-
-See which process is using a port
-```lsof -i :5000```
-
-Use xdotool to emulate a key press
-```sudo apt-get install xdotool xbase-clients```
-```xdotool key ctrl+shift+t```
-
-Open a file in the default application
-```xdg-open filename &```
-
-Open GUI File Browser at the current directory
-```xdg-open .```
-
-Extract a tar.gz achive
-```tar xvzf archive.tar.gz```
-
-Extract a tar.bz2 achive
-```tar xvjf archive.tar.bz2```
-
-tar flags
-```
-x extract
-v verbose
-z bunzip (bz2)
-g gunzip (gz)
-f file
-```
-
-Logout of MATE
-```
-mate-session-save --force-logout
-```
-
-Shutdown immediately
-```sudo shutdown now```
-
-Display current logged in user's username
-```$ whoami```
-
-List all currently logged in users (two different ways)
-```
-$ w
-$ who
-```
-
 Create a virtual python environment with specified interpreter
 ```virtualenv -p /usr/bin/python2.6 <path/to/new/virtualenv/>```
 
@@ -214,6 +232,9 @@ Remove user from group
 
 List all the groups that a user belongs to
 ```groups <username>```
+
+Identify location of executable
+```which python```
 
 Determine where a program resides
 ```$ which tclsh
