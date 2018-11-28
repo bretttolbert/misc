@@ -429,6 +429,8 @@ $ test -z "" && echo "foo"
 foo
 ```
 
+For more info on Bash test flags: ```help test```
+
 ## Raspberry Pi
 
 Open Raspberry Pi configuration menu
