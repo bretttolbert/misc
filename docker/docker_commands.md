@@ -18,7 +18,7 @@
 
 ```docker pull <image-name>:latest```
 
-```docker ps -a -q```
+```docker ps -a```
 
 ```docker kill $(docker ps -a -q)```
 
@@ -29,3 +29,5 @@
 ```docker system prune -a```
 
 ```docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'```
+
+```winpty docker exec -it verb_conjugate_fr_web //bin//sh```
