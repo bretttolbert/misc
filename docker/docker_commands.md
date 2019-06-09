@@ -30,4 +30,10 @@
 
 ```docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}'```
 
+```docker port <container>```
+
+```docker network ls```
+
+```docker network inspect <network-name>```
+
 ```winpty docker exec -it verb_conjugate_fr_web //bin//sh```
