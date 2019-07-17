@@ -1,10 +1,16 @@
 ## Useful Docker commands
 
+```docker image ls```
+
 ```docker ps --no-trunc```
 
-```docker exec -it <image-name> /bin/bash```
+```docker ps -a```
+
+```docker run -d <image-name>```
 
 ```docker run -it <image-name> /bin/bash```
+
+```docker exec -it <container-name> /bin/bash```
 
 ```docker tag <existing-image> <hub-user>/<repo-name>[:<tag>]```
 
@@ -17,8 +23,6 @@
 ```docker run --name <container-name> -d -p <external-port>:<container-port> <image-name>:latest```
 
 ```docker pull <image-name>:latest```
-
-```docker ps -a```
 
 ```docker kill $(docker ps -a -q)```
 
